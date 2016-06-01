@@ -45,9 +45,29 @@ def ContinueGame(current_score, goal_score = 100):
     else:
         return True
 
-def DoRound():
+def DrawBoard(board):
+    #Display the board to the screen
+    print("Drawing Board")
+
+def GetMove():
+    #Get the move from the user
+    print("Getting move")
+    return "blu"
+
+def Update(board, move):
+    #Update the board according to move
+    print("Updating board")
+
+def DoRound(board):
     #Perform one round of the game
-    print("Doing one round")
+    #Display current board
+    DrawBoard(board)
+    #Get move
+    move = GetMove()
+    #Update board
+    Update(board, move)
+    global turn
+    turn += 1
 
 # main() starts here...
 #######################
@@ -58,4 +78,4 @@ Initialize(board)
 #While game not over
 while ContinueGame(score, goalscore):
     #Do a round of the game
-    DoRound()
+    DoRound(board)
