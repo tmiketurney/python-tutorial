@@ -46,8 +46,19 @@ def ContinueGame(current_score, goal_score = 100):
         return True
 
 def DrawBoard(board):
-    #Display the board to the screen
-    print("Drawing Board")
+    # Display the board to the screen
+    # Draw some blank lines first
+    print("\n\n\n")
+    print("----------------------------------")
+    # Now draw rows from 8 down to 1
+    for i in range(7, -1, -1):
+        #Draw each row
+        linetodraw=""
+        for j in range(8):
+            linetodraw += " | " + board[i][j]
+        linetodraw+= " |"
+        print(linetodraw)
+        print("----------------------------------")
 
 def GetMove():
     #Get the move from the user
