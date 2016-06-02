@@ -1,3 +1,16 @@
+#!/usr/bin/env python3
+#
+#  @file
+#
+#  COPYRIGHT:
+#
+#     Copyright: Tools Made Tough, 2016:
+#
+#     License:  GPL v2.1
+#
+#  @author
+#  @date
+#
 
 from random import choice
 
@@ -82,11 +95,12 @@ def DoRound(board):
 
 # main() starts here...
 #######################
+if __name__ == '__main__':
 
-#Initialize game
-Initialize(board)
+    #Initialize game
+    Initialize(board)
 
-#While game not over
-while ContinueGame(score, goalscore):
-    #Do a round of the game
-    DoRound(board)
+    #While game not over
+    while ContinueGame(score, goalscore):
+        #Do a round of the game
+        DoRound(board)
