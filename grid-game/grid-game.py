@@ -126,7 +126,44 @@ def SwapPieces(board, move):
 
 def RemovePieces(board):
     #Remove 3-in-a-row and 3-in-a-column pieces
-    print("Removing Pieces")
+    #Create board to store remove-or-not
+    remove = [[0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0],
+              [0, 0, 0, 0, 0, 0, 0, 0]]
+
+    #Go through rows
+    for i in range(8):
+        for j in range(6):
+            if (board[i][j] == board[i][j+1]) and (board[i][j] == board[i][j+2]):
+                #three in a row are the same!
+                remove[i][j] = 1
+                remove[i][j+1] = 1
+                remove[i][j+2] = 1
+
+    #Go through columns
+    for i in range(6):
+        for j in range(8):
+            if (board[i][j] == board[i+1][j]) and (board[i][j] == board[i+2][j]):
+                #three in a column are the same!
+                remove[i][j] = 1
+                remove[i+1][j] = 1
+                remove[i+2][j] = 1
+
+    #Eliminate those marked
+    global score
+    removed_any = False
+    for i in range(8):
+        for j in range(8):
+            if remove[i][j] == 1:
+                board[i][j] = 0
+                score += 1
+                removed_any = True
+    return removed_any
 
 def DropPieces(board):
     #Drop pieces to fill in blanks
