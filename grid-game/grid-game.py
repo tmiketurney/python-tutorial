@@ -66,15 +66,20 @@ def DrawBoard(board):
     # Now draw rows from 8 down to 1
     for i in range(7, -1, -1):
         #Draw each row
-        linetodraw=""
+        linetodraw=str(i+1)
         for j in range(8):
             linetodraw += " | " + board[i][j]
         linetodraw+= " |"
         print(linetodraw)
         print("----------------------------------")
+    print("    a   b   c   d   e   f   g   h")
+    global score
+    print("Current Score: ", score)
 
 def GetMove():
     #Get the move from the user
+    print("Enter a move by specifying the space and the direction (u,d,l,r).  Spaces should list column then row.")
+    print("For example, e3u would swap position e3 with one above, and f7r would swap f7 to the right.")
     move = input("Enter move:")
     return move
 
