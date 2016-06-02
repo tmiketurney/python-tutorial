@@ -78,9 +78,51 @@ def GetMove():
     move = input("Enter move:")
     return move
 
+def ConvertLetterToCol(Col):
+    if Col == 'a':
+        return 0
+    elif Col == 'b':
+        return 1
+    elif Col == 'c':
+        return 2
+    elif Col == 'd':
+        return 3
+    elif Col == 'e':
+        return 4
+    elif Col == 'f':
+        return 5
+    elif Col == 'g':
+        return 6
+    elif Col == 'h':
+        return 7
+    else:
+        #not a valid column!
+        return -1
+
 def SwapPieces(board, move):
     #Swap pieces on board according to move
-    print("Swapping Pieces")
+    #Get original position
+    origrow = int(move[1])-1
+    origcol = ConvertLetterToCol(move[0])
+
+    #Get adjacent position
+    if move[2] == 'u':
+        newrow = origrow + 1
+        newcol = origcol
+    elif move[2] == 'd':
+        newrow = origrow - 1
+        newcol = origcol
+    elif move[2] == 'l':
+        newrow = origrow
+        newcol = origcol - 1
+    elif move[2] == 'r':
+        newrow = origrow
+        newcol = origcol + 1
+
+    #Swap objects in two positions
+    temp = board[origrow][origcol]
+    board[origrow][origcol] = board[newrow][newcol]
+    board[newrow][newcol] = temp
 
 def RemovePieces(board):
     #Remove 3-in-a-row and 3-in-a-column pieces
