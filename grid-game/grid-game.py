@@ -10,7 +10,7 @@
 #
 #  @author   T.Michael Turney
 #  @date     2.June.2016
-#  @version  1.01
+#  @version  1.02
 #
 
 from random import choice
@@ -18,7 +18,7 @@ from random import choice
 # Global Data
 #############
 
-version = "1.01"
+version = "1.02"
 
 turn = 1
 score = 0
