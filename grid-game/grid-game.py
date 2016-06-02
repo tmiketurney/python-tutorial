@@ -75,12 +75,33 @@ def DrawBoard(board):
 
 def GetMove():
     #Get the move from the user
-    print("Getting move")
-    return "blu"
+    move = input("Enter move:")
+    return move
+
+def SwapPieces(board, move):
+    #Swap pieces on board according to move
+    print("Swapping Pieces")
+
+def RemovePieces(board):
+    #Remove 3-in-a-row and 3-in-a-column pieces
+    print("Removing Pieces")
+
+def DropPieces(board):
+    #Drop pieces to fill in blanks
+    print("Dropping Pieces")
+
+def FillBlanks(board):
+    #Fill blanks with random pieces
+    print("Filling Blanks")
 
 def Update(board, move):
     #Update the board according to move
-    print("Updating board")
+    SwapPieces(board, move)
+    pieces_eliminated = True
+    while pieces_eliminated:
+        pieces_eliminated = RemovePieces(board)
+        DropPieces(board)
+        FillBlanks(board)
 
 def DoRound(board):
     #Perform one round of the game
