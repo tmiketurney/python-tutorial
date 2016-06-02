@@ -8,14 +8,17 @@
 #
 #     License:  GPL v2.1
 #
-#  @author
-#  @date
+#  @author   T.Michael Turney
+#  @date     2.June.2016
+#  @version  1.01
 #
 
 from random import choice
 
 # Global Data
 #############
+
+version = "1.01"
 
 turn = 1
 score = 0
@@ -30,8 +33,6 @@ board = [[0, 0, 0, 0, 0, 0, 0, 0],
          [0, 0, 0, 0, 0, 0, 0, 0],
          [0, 0, 0, 0, 0, 0, 0, 0],
          [0, 0, 0, 0, 0, 0, 0, 0]]
-
-_version = "1.01"
 
 # Helper Functions
 ##################
