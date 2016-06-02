@@ -167,7 +167,18 @@ def RemovePieces(board):
 
 def DropPieces(board):
     #Drop pieces to fill in blanks
-    print("Dropping Pieces")
+    for j in range(8):
+        #make list of pieces in the column
+        listofpieces = []
+        for i in range(8):
+            if board[i][j] != 0:
+                listofpieces.append(board[i][j])
+        #copy that list into column
+        for i in range(len(listofpieces)):
+            board[i][j] = listofpieces[i]
+        #fill in remainder of column with 0s
+        for i in range(len(listofpieces), 8):
+            board[i][j] = 0
 
 def FillBlanks(board):
     #Fill blanks with random pieces
