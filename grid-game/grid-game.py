@@ -79,11 +79,47 @@ def DrawBoard(board):
     global score
     print("Current Score: ", score)
 
+def IsValid(move):
+    #Returns true if the move is valid, false otherwise
+
+    #Check length of move
+    if len(move) != 3:
+        return False
+
+    #Check that the space and direction are Valid
+    if not (move[0] in ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h']):
+        return False
+    if not (move[1] in ['1', '2', '3', '4', '5', '6', '7', '8']):
+        return False
+    if not (move[2] in ['u', 'd', 'l', 'r']):
+        return False
+
+    #Check that the direction is valid for the given row/column
+    #check that first column moves are not left
+    if (move[0] == 'a') and (move[2] == 'l'):
+        return False
+    #check that last column moves are not right
+    if (move[0] == 'h') and (move[2] == 'r'):
+        return False
+    # check that bottom row moves are not down
+    if (move[1] == '1') and (move[2] == 'd'):
+        return False
+    # check that top row moves are not up
+    if (move[1] == '8') and (move[2] == 'u'):
+        return False
+
+    return True
+
 def GetMove():
     #Get the move from the user
     print("Enter a move by specifying the space and the direction (u,d,l,r).  Spaces should list column then row.")
     print("For example, e3u would swap position e3 with one above, and f7r would swap f7 to the right.")
     move = input("Enter move:")
+
+    # Loop until we get good move
+    while not IsValid(move):
+        move = input("That's not a valid move!  Enter another move: ")
+
     return move
 
 def ConvertLetterToCol(Col):
