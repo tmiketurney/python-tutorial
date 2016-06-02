@@ -182,7 +182,10 @@ def DropPieces(board):
 
 def FillBlanks(board):
     #Fill blanks with random pieces
-    print("Filling Blanks")
+    for i in range(8):
+        for j in range(8):
+            if (board[i][j] == 0):
+                board[i][j] = choice(['Q', 'R', 'S', 'T', 'U'])
 
 def Update(board, move):
     #Update the board according to move
