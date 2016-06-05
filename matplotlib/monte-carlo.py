@@ -17,7 +17,7 @@ import random
 from matplotlib.pyplot import hist, show
 
 def ChangeInBalance(initial_balance):
-    rate = random.uniform(0.0, 0.06)
+    rate = random.gauss(0.03, 0.02)
     return initial_balance*rate
 
 number_years = 10
