@@ -13,7 +13,7 @@
 #  @version  1.01
 #
 
-from matplotlib.pyplot import plot, axis, show
+from matplotlib.pyplot import plot, axis, show, legend
 
 # main() starts here...
 #######################
@@ -25,9 +25,16 @@ from matplotlib.pyplot import plot, axis, show
 
 xlist = range(0,6)
 ylist = []
+ylist2 = []
 for i in xlist:
     ylist.append(i*i)
+    ylist2.append(i*i*i)
 
-plot(xlist, ylist)
-axis([0,5,0,25])
+plot(xlist, ylist, label="squares", marker='+', color="red", markeredgecolor="blue")
+plot(xlist, ylist2, label="cubes", marker="o", color="green", markeredgecolor="green")
+
+axis([0,5,0,125])
+
+legend()
+
 show()
