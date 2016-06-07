@@ -16,19 +16,25 @@
 class BankAccount:
 
     def __init__(self, initial_amount=0.0):
-        self.balance = initial_amount
-        self.deposits = []
+        self._balance = initial_amount
+        self._deposits = []
 
     def makeDeposit(self, amount):
-        self.balance += amount
-        self.deposits.append(amount)
+        self._balance += amount
+        self._deposits.append(amount)
 
     def makeWithdrawal(self, amount):
-        self.balance -= amount
+        self._balance -= amount
+
+    def getBalance(self):
+        return self._balance
+
+    def getDeposits(self):
+        return self._deposits
 
 checking_account = BankAccount(100.00)
 checking_account.makeDeposit(50)
 checking_account.makeWithdrawal(70.00)
 
-print(checking_account.balance)
-print(checking_account.deposits)
+print(checking_account.getBalance())
+print(checking_account.getDeposits())
