@@ -21,9 +21,11 @@ class FootballPlayer:
     def printPlayer(self):
         print(self.name+" playing for the "+self.team+":")
 
-    def isGood(self):
-        print("Error! isGood is not defined!")
-        return False
+    def printGood(self):
+        if (self.isGood()):
+            print("    is a GOOD player")
+        else:
+            print("    is NOT a good player")
 
 class Quarterback(FootballPlayer):
     pass_attempts = 0
@@ -68,7 +70,4 @@ playerlist.append(player2)
 
 for player in playerlist:
     player.printPlayer()
-    if (player.isGood()):
-        print("    is a GOOD player")
-    else:
-        print("    is NOT a good player")
+    player.printGood()
