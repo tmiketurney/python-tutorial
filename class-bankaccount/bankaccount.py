@@ -13,11 +13,14 @@
 #  @version  1.02
 #
 
+from datetime import date
+
 class BankAccount:
 
     def __init__(self, initial_amount=0.0):
         self._balance = initial_amount
         self._deposits = []
+        self.opendate = date(2011, 3, 15)
 
     def makeDeposit(self, amount):
         self._balance += amount
@@ -30,11 +33,15 @@ class BankAccount:
         return self._balance
 
     def getDeposits(self):
-        return self._deposits
+        copied_list = self._deposits[:]
+        return copied_list
 
-checking_account = BankAccount(100.00)
-checking_account.makeDeposit(50)
-checking_account.makeWithdrawal(70.00)
+def winLottery(account):
+    account.makeDeposit(10000000.00)
+
+checking_account = BankAccount()
+winLottery(checking_account)
 
 print(checking_account.getBalance())
 print(checking_account.getDeposits())
+print(checking_account.opendate)
