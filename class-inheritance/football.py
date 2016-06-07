@@ -13,6 +13,9 @@
 #  @version  1.01
 #
 
+class MissingChildMethodError(Exception):
+    pass
+
 class FootballPlayer:
     name = "John Doe"
     team = "None"
@@ -20,6 +23,9 @@ class FootballPlayer:
 
     def printPlayer(self):
         print(self.name+" playing for the "+self.team+":")
+
+    def isGood(self):
+        raise MissingChildMethodError("Error! isGood is not defined!")
 
     def printGood(self):
         if (self.isGood()):
@@ -38,18 +44,12 @@ class Quarterback(FootballPlayer):
     def yardsPerAttempt(self):
         return self.pass_yards/self.pass_attempts
 
-    def isGood(self):
-        return(self.yardsPerAttempt() > 7)
-
 class RunningBack(FootballPlayer):
     rushes = 0
     rush_yards = 0
 
     def yardsPerRush(self):
         return self.rush_yards/self.rushes
-
-    def isGood(self):
-        return(self.yardsPerRush() > 4)
 
 player1 = Quarterback()
 player1.name = "John"
@@ -64,10 +64,10 @@ player2.team = "Eagles"
 player2.rushes = 12
 player2.rush_yards = 73
 
-playerlist = []
-playerlist.append(player1)
-playerlist.append(player2)
-
-for player in playerlist:
-    player.printPlayer()
-    player.printGood()
+try:
+    if player1.isGood():
+        print(player1.name+" is a GOOD player")
+    else:
+        print(player1.name+" is NOT a good player")
+except MissingChildMethodError:
+    print("Whoops = we forgot to define isGood!")
