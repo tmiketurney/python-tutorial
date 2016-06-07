@@ -21,6 +21,10 @@ class FootballPlayer:
     def printPlayer(self):
         print(self.name+" playing for the "+self.team+":")
 
+    def isGood(self):
+        print("Error! isGood is not defined!")
+        return False
+
 class Quarterback(FootballPlayer):
     pass_attempts = 0
     completions = 0
@@ -32,12 +36,18 @@ class Quarterback(FootballPlayer):
     def yardsPerAttempt(self):
         return self.pass_yards/self.pass_attempts
 
+    def isGood(self):
+        return(self.yardsPerAttempt() > 7)
+
 class RunningBack(FootballPlayer):
     rushes = 0
     rush_yards = 0
 
     def yardsPerRush(self):
         return self.rush_yards/self.rushes
+
+    def isGood(self):
+        return(self.yardsPerRush() > 4)
 
 player1 = Quarterback()
 player1.name = "John"
@@ -52,8 +62,13 @@ player2.team = "Eagles"
 player2.rushes = 12
 player2.rush_yards = 73
 
-player1.printPlayer()
-print("Completion Rate:", player1.completionRate(), "for", player1.yardsPerAttempt(), "yards per attempt")
+playerlist = []
+playerlist.append(player1)
+playerlist.append(player2)
 
-player2.printPlayer()
-print(player2.yardsPerRush(), "yards per rush")
+for player in playerlist:
+    player.printPlayer()
+    if (player.isGood()):
+        print("    is a GOOD player")
+    else:
+        print("    is NOT a good player")
