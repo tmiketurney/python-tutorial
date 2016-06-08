@@ -15,27 +15,34 @@
 
 import json
 
-var family = [{
-    "name" : "Jason",
-    "age" : "24",
-    "gender" : "male"
-},
-{
-    "name" : "Kyle",
-    "age" : "21",
-    "gender" : "male"
-}];
+length = 20.0
+width = 15
 
-myfile = open("Filename", "w")
+outfile = open("datafile1.dat", "w")
 
-json_string = json.dumps(data)
-myfile.write(json_string+'\n')
+json_string = json.dumps(length)
+outfile.write(json_string+'\n')
 
-myfile.close()
+json_string = json.dumps(width)
+outfile.write(json_string+'\n')
 
-myfile = open("Filename", "r")
+json_string = json.dumps("Data for an example")
+outfile.write(json_string+'\n')
 
-json_string = myfile.readline()
-data = json.loads(json_string)
+outfile.close()
 
-myfile.close()
+infile = open("datafile1.dat", "r")
+
+json_string = infile.readline()
+l = json.loads(json_string)
+
+json_string = infile.readline()
+w = json.loads(json_string)
+
+json_string = infile.readline()
+description = json.loads(json_string)
+
+infile.close()
+
+print(description)
+print(l*w)
