@@ -13,6 +13,8 @@
 #  @version  1.01
 #
 
+import json
+
 class MissingChildMethodError(Exception):
     pass
 
@@ -64,10 +66,14 @@ player2.team = "Eagles"
 player2.rushes = 12
 player2.rush_yards = 73
 
-try:
-    if player1.isGood():
-        print(player1.name+" is a GOOD player")
-    else:
-        print(player1.name+" is NOT a good player")
-except MissingChildMethodError:
-    print("Whoops = we forgot to define isGood!")
+playerlist = []
+playerlist.append(player1)
+playerlist.append(player2)
+
+outfile = open("datafile.dat", "w")
+
+for player in playerlist:
+    json_string = json.dumps(player.__dict__)+'\n'
+    outfile.write(json_string)
+
+outfile.close()
