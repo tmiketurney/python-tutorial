@@ -13,6 +13,8 @@
 #  @version  1.01
 #
 
+import json
+
 var family = [{
     "name" : "Jason",
     "age" : "24",
@@ -23,3 +25,17 @@ var family = [{
     "age" : "21",
     "gender" : "male"
 }];
+
+myfile = open("Filename", "w")
+
+json_string = json.dumps(data)
+myfile.write(json_string+'\n')
+
+myfile.close()
+
+myfile = open("Filename", "r")
+
+json_string = myfile.readline()
+data = json.loads(json_string)
+
+myfile.close()
