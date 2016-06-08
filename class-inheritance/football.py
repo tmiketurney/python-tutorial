@@ -14,6 +14,7 @@
 #
 
 import json
+import pickle
 
 class MissingChildMethodError(Exception):
     pass
@@ -46,12 +47,18 @@ class Quarterback(FootballPlayer):
     def yardsPerAttempt(self):
         return self.pass_yards/self.pass_attempts
 
+    def isGood(self):
+        return (self.yardsPerAttempt() > 7)
+
 class RunningBack(FootballPlayer):
     rushes = 0
     rush_yards = 0
 
     def yardsPerRush(self):
         return self.rush_yards/self.rushes
+
+    def isGood(self):
+        return (self.yardsPerRush() > 4)
 
 player1 = Quarterback()
 player1.name = "John"
@@ -70,10 +77,26 @@ playerlist = []
 playerlist.append(player1)
 playerlist.append(player2)
 
-outfile = open("datafile.dat", "w")
+outfile = open("datafile2.dat", "wb")
 
 for player in playerlist:
-    json_string = json.dumps(player.__dict__)+'\n'
-    outfile.write(json_string)
+    pickle.dump(player, outfile)
 
 outfile.close()
+
+infile = open("datafile2.dat", "rb")
+newplayer1 = pickle.load(infile)
+newplayer2 = pickle.load(infile)
+infile.close()
+
+newplayer1.printPlayer()
+if newplayer1.isGood():
+    print("   is a GOOD player.")
+else:
+    print("   is NOT a good player.")
+
+newplayer2.printPlayer()
+if newplayer2.isGood():
+    print("   is a GOOD player.")
+else:
+    print("   is NOT a good player.")
